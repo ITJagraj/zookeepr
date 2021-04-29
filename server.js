@@ -1,5 +1,6 @@
 const { animals } = require('./data/animal.json'); //creating the route that front-end can request from
 const express = require('express'); //reqired package
+const PORT = process.env.PORT || 3001;
 const app = express(); //To instantiate the server
 function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
@@ -46,6 +47,6 @@ function filterByQuery(query, animalsArray) {
         }
         res.json(results); //using send mthod from res parameter which is response to send the string to client
     });
-    app.listen(3001, () => {
-        console.log(`API server now on port 3001!`); //listen to request
+    app.listen(PORT, () => {
+        console.log(`API server now on port ${PORT}!`); //listen to request
     });
