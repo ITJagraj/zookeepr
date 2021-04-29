@@ -40,6 +40,10 @@ function filterByQuery(query, animalsArray) {
     // return the filtered results:
     return filteredResults;
   }
+  function findById(id, animalsArray) { // that takes in the id and array of animals and returns a single animal object
+    const result = animalsArray.filter(animal => animal.id === id)[0];
+    return result;
+  }
     app.get('/api/animals', (req, res) => { //adding the route (get requires two arguments a) string that describes the route b) callback fn)
         let results = animals;
         if (req.query) { //request has a property for the request query string, parameter, body
@@ -47,6 +51,14 @@ function filterByQuery(query, animalsArray) {
         }
         res.json(results); //using send mthod from res parameter which is response to send the string to client
     });
+    app.get('/api/animals/:id', (req, res) => {
+        const result = findById(req.params.id, animals); //the param object needs to be defined in the route path
+        if (result) {
+            res.json(result);
+          } else {
+            res.send(404);
+          }
+        });
     app.listen(PORT, () => {
         console.log(`API server now on port ${PORT}!`); //listen to request
     });
