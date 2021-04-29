@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ITJagraj/zookeepr/issues"
   },
-  "homepage": "https://github.com/ITJagraj/zookeepr#readme"
+  "homepage": "https://github.com/ITJagraj/zookeepr#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
